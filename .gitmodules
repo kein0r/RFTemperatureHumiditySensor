@@ -1,0 +1,3 @@
+[submodule "Sensors"]
+	path = Sensors
+	url = https://github.com/kein0r/Sensors.git
