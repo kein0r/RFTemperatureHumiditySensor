@@ -1,25 +1,20 @@
+/** @ingroup RFTemperatureHumiditySensor
+ * @{
+ */
 #include <ioCC2530.h>
-#include "PlatformTypes.h"
+#include <PlatformTypes.h>
 #include <board.h>
-#include <dht22.h>
+#include <WatchdogTimer.h>
 #include <IEEE_802.15.4.h>
 #include <CC253x.h>
-
-/**
-  * \brief No buffer is used to temporary store the received and sent frames.
-  * For each frame that is sent or received a buffer must be allocated before
-  * sending or receiving.
-  * For this a message element (struct, array etc.) must be declared and allocated
-  * to which the payload pointer of the IEE802154_header_t will point.
-  */
-typedef struct {
-  uint8_t id;                     /*!< message id must always come first */
-  sint16_t dht22Temperatur;       /*!< temperatur of dht22 */
-  uint16_t dht22RelativeHumidity; /*!< relative humidity of dht22 */
-} sensorInformation_t;
+#include <string.h>
+#include <DHT22.h>
+#include "RFTemperatureHumiditySensor.h"
 
 sensorInformation_t sensorInformation;
-IEE802154_DataFrameHeader_t sentFrameOne = {{0,0,0,0,0,0,0,0,0} ,0 ,0 ,0 ,0, (IEE802154_PayloadPointer)&sensorInformation};
+IEEE802154_DataFrameHeader_t  IEEE802154_TxDataFrame;
+IEEE802154_DataFrameHeader_t  IEEE802154_RxDataFrame;
+IEEE802154_Payload radioRxPayload[100];
 
 void main( void )
 {
@@ -33,19 +28,40 @@ void main( void )
   DHT22_init();
   IEE802154_radioInit();
   
+  /* Prepare rx buffer for IEEE 802.15.4 */
+  IEEE802154_RxDataFrame.payload = radioRxPayload;
+  IEEE802154_radioInit(&(CC2530Bee_Config.IEEE802154_config));
+  /* Tx source address is preloaded with chip's own 64bit address. Check if it should be used. */
+  IEEE802154_TxDataFrame.fcf.sourceAddressMode = IEEE802154_FCF_ADDRESS_MODE_16BIT;
+  enableAllInterrupt();
   /* prepare header for message */
-  sentFrameOne.fcf.frameType = IEEE802154_FRAME_TYPE_DATA;  /* 3: 0x01 */
-  sentFrameOne.fcf.securityEnabled = IEEE802154_SECURITY_DISABLED; /* 1: 0x0 */
-  sentFrameOne.fcf.framePending = 0x0; /* 1:0x0 */
-  sentFrameOne.fcf.ackRequired = IEEE802154_ACKNOWLEDGE_REQUIRED; /* 1: 0x1 */
-  sentFrameOne.fcf.panIdCompression = IEEE802154_PANIDCOMPRESSION_DISABLED; /* 1: 0x0 */
-  sentFrameOne.fcf.destinationAddressMode = IEEE802154_ADDRESS_MODE_16BIT;
-  sentFrameOne.fcf.frameVersion = 0x00;
-  sentFrameOne.fcf.SourceAddressMode = IEEE802154_ADDRESS_MODE_16BIT;
-  sentFrameOne.sequenceNumber = 0x00;
-  sentFrameOne.destinationPANID = 0xffff;
-  sentFrameOne.destinationAddress = 0xffff;
-  sentFrameOne.sourceAddress = 0xaffe;
+  /* prepare header for IEEE 802.15.4 Tx message. Values are stored in config but must be copied 
+   * to #IEEE802154_TxDataFrame in order to be effective. */
+  IEEE802154_TxDataFrame.fcf.frameType = IEEE802154_FCF_FRAME_TYPE_DATA;  /* 3: 0x01 */
+  IEEE802154_TxDataFrame.fcf.securityEnabled = IEEE802154_FCF_SECURITY_DISABLED; /* 1: 0x0 */
+  IEEE802154_TxDataFrame.fcf.framePending = 0x0; /* 1:0x0 */
+  IEEE802154_TxDataFrame.fcf.ackRequired = IEEE802154_FCF_ACKNOWLEDGE_REQUIRED; /* 1: 0x1 */
+#ifdef IEEE802154_ENABLE_PANID_COMPRESSION
+  IEEE802154_TxDataFrame.fcf.panIdCompression = IEEE802154_FCF_PANIDCOMPRESSION_ENABLED; /* 1: 0x1 */
+#else
+  IEEE802154_TxDataFrame.fcf.panIdCompression = IEEE802154_FCF_PANIDCOMPRESSION_DISABLED; /* 1: 0x0 */
+#endif
+  IEEE802154_TxDataFrame.fcf.destinationAddressMode = RFTemperatureHumiditySensor_DestinationAdressingMode;
+  IEEE802154_TxDataFrame.fcf.frameVersion = 0x00;
+  IEEE802154_TxDataFrame.fcf.sourceAddressMode = RFTemperatureHumiditySensor_SourceAdressingMode;
+  /* preset variable to some meaningfull values */
+  IEEE802154_TxDataFrame.sequenceNumber = 0x00;
+  IEEE802154_TxDataFrame.destinationPANID = RFTemperatureHumiditySensor_PanID;
+  IEEE802154_TxDataFrame.destinationAddress.shortAddress = 0xffff;   /* broadcast */
+  IEEE802154_TxDataFrame.sourceAddress.shortAddress = RFTemperatureHumiditySensor_ShortAddress;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[0] = IEEE_EXTENDED_ADDRESS0;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[1] = IEEE_EXTENDED_ADDRESS1;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[2] = IEEE_EXTENDED_ADDRESS2;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[3] = IEEE_EXTENDED_ADDRESS3;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[4] = IEEE_EXTENDED_ADDRESS4;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[5] = IEEE_EXTENDED_ADDRESS5;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[6] = IEEE_EXTENDED_ADDRESS6;
+  IEEE802154_TxDataFrame.sourceAddress.extendedAdress[7] = IEEE_EXTENDED_ADDRESS7;
   sensorInformation.id = 0x42;
 
   sleepTime.value = 0xffff;
@@ -62,3 +78,49 @@ void main( void )
     CC253x_ActivatePowerMode(SLEEPCMD_MODE_PM2);
   }
 }
+
+/**
+ * Callback whenever Data frame was received
+ * @param payloadLength Length of data in IEEE802154_RxDataFrame.payload
+ * @param rssi value measured over the firs eight symbols following SFD
+ * @note This function runs in interrupt context
+*/
+void IEEE802154_UserCbk_DataFrameReceived(uint8_t payloadLength, sint8_t rssi)
+{
+
+}
+
+/**
+ * Callback whenever Ack frame was received
+ * @param payloadLength Length of data in IEEE802154_RxDataFrame.payload
+ * @param rssi value measured over the firs eight symbols following SFD
+ * @note This function runs in interrupt context
+*/
+void IEEE802154_UserCbk_AckFrameReceived(uint8_t payloadLength, sint8_t rssi)
+{
+
+}
+
+/**
+ * Callback whenever MAC Command frame was received
+ * @param payloadLength Length of data in IEEE802154_RxDataFrame.payload
+ * @param rssi value measured over the firs eight symbols following SFD
+ * @note This function runs in interrupt context
+*/
+void IEEE802154_UserCbk_MACCommandFrameReceived(uint8_t payloadLength, sint8_t rssi)
+{
+  
+}
+
+/**
+ * Callback whenever frame with incorrect CRC was received
+ * @param payloadLength Length of data in IEEE802154_RxDataFrame.payload
+ * @param rssi value measured over the firs eight symbols following SFD
+ * @note This function runs in interrupt context
+*/
+void IEEE802154_UserCbk_CRCError(uint8_t payloadLength, sint8_t rssi)
+{
+  
+}
+
+/** @}*/
