@@ -39,12 +39,10 @@ void main( void )
   IEEE802154_Config.shortAddress = RFTemperatureHumiditySensor_ShortAddress;
   
   IEEE802154_radioInit(&(IEEE802154_Config));
-  /* Tx source address is preloaded with chip's own 64bit address. Check if it should be used. */
+  /* Tx source address is preloaded with chip's own 64bit address. For now we use 16bit source address. */
   IEEE802154_TxDataFrame.fcf.sourceAddressMode = IEEE802154_FCF_ADDRESS_MODE_16BIT;
   enableAllInterrupt();
-  /* prepare header for message */
-  /* prepare header for IEEE 802.15.4 Tx message. Values are stored in config but must be copied 
-   * to #IEEE802154_TxDataFrame in order to be effective. */
+  /* Prepare header for IEEE 802.15.4 Tx message. */
   IEEE802154_TxDataFrame.fcf.frameType = IEEE802154_FCF_FRAME_TYPE_DATA;  /* 3: 0x01 */
   IEEE802154_TxDataFrame.fcf.securityEnabled = IEEE802154_FCF_SECURITY_DISABLED; /* 1: 0x0 */
   IEEE802154_TxDataFrame.fcf.framePending = 0x0; /* 1:0x0 */
