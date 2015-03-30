@@ -11,10 +11,12 @@
 #include <DHT22.h>
 #include "RFTemperatureHumiditySensor.h"
 
-sensorInformation_t sensorInformation;
+IEEE802154_Config_t IEEE802154_Config;
+
 IEEE802154_DataFrameHeader_t  IEEE802154_TxDataFrame;
 IEEE802154_DataFrameHeader_t  IEEE802154_RxDataFrame;
 IEEE802154_Payload radioRxPayload[100];
+sensorInformation_t sensorInformation;
 
 void main( void )
 {
@@ -26,11 +28,17 @@ void main( void )
   P0DIR_4 = HAL_PINOUTPUT;
   ledInit();
   DHT22_init();
-  IEE802154_radioInit();
   
-  /* Prepare rx buffer for IEEE 802.15.4 */
+  /* Prepare rx and tx  buffer for IEEE 802.15.4 (Must be done before interrupt enable) */
   IEEE802154_RxDataFrame.payload = radioRxPayload;
-  IEEE802154_radioInit(&(CC2530Bee_Config.IEEE802154_config));
+  IEEE802154_RxDataFrame.payload = (IEEE802154_Payload*) &sensorInformation;
+  
+  /* General radio configuration */
+  IEEE802154_Config.Channel = RFTemperatureHumiditySensor_Channel;
+  IEEE802154_Config.PanID = RFTemperatureHumiditySensor_PanID;
+  IEEE802154_Config.shortAddress = RFTemperatureHumiditySensor_ShortAddress;
+  
+  IEEE802154_radioInit(&(IEEE802154_Config));
   /* Tx source address is preloaded with chip's own 64bit address. Check if it should be used. */
   IEEE802154_TxDataFrame.fcf.sourceAddressMode = IEEE802154_FCF_ADDRESS_MODE_16BIT;
   enableAllInterrupt();
@@ -72,11 +80,22 @@ void main( void )
     /* prepare values */
     sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
     sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
-    IEE802154_radioSentDataFrame(&sentFrameOne, sizeof(sensorInformation_t));
+    //IEE802154_radioSentDataFrame(&sentFrameOne, sizeof(sensorInformation_t));
     ledOff();
     CC253x_IncrementSleepTimer(sleepTime);
     CC253x_ActivatePowerMode(SLEEPCMD_MODE_PM2);
   }
+}
+
+/**
+ * Callback whenever Beacon frame was received
+ * @param payloadLength Length of data in IEEE802154_RxDataFrame.payload
+ * @param rssi value measured over the firs eight symbols following SFD
+ * @note This function runs in interrupt context
+*/
+void IEEE802154_UserCbk_BeaconFrameReceived(uint8_t payloadLength, sint8_t rssi)
+{
+  
 }
 
 /**
