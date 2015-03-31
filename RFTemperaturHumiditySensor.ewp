@@ -2214,7 +2214,7 @@
     <name>$PROJ_DIR$\Config.h</name>
   </file>
   <file>
-    <name>$PROJ_DIR$\IEEE_802.15.4_cfg.h</name>
+    <name>$PROJ_DIR$\dht22_cfg.h</name>
   </file>
   <file>
     <name>$PROJ_DIR$\main.c</name>

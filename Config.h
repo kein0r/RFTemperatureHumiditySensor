@@ -21,7 +21,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
   Credits:
-  Parts of this code are inspired by Arduino hardware serial library.
 */
 /*******************| Inclusions |*************************************/
 #include <PlatformTypes.h>

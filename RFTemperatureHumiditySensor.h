@@ -14,23 +14,28 @@
  * Channel to be used for IEEE 802.15.4 radio. The channels are numbered 11 
  * through 26.
 */
-#define RFTemperatureHumiditySensor_Channel                       0x19
+#define RFTemperatureHumiditySensor_Channel                     0x19
 
 /**
- * Default Short address of this node (big-endian)
+ * Default Short address of this node (big-endian). For now we choose 0xaf00 + sensorID (see below)
 */
-#define RFTemperatureHumiditySensor_ShortAddress                  (IEEE802154_ShortAddress_t)0xfeaf
+#define RFTemperatureHumiditySensor_ShortAddress                (IEEE802154_ShortAddress_t)0x42af
 
 /**
  * Default PanID of this note (big-endian).
 */
-#define RFTemperatureHumiditySensor_PanID                         (IEEE802154_PANIdentifier_t)0x3332
+#define RFTemperatureHumiditySensor_PanID                       (IEEE802154_PANIdentifier_t)0x3332
 
 /**
  * Default source and destination address mode
 */
-#define RFTemperatureHumiditySensor_DestinationAdressingMode      IEEE802154_FCF_ADDRESS_MODE_16BIT
-#define RFTemperatureHumiditySensor_SourceAdressingMode           IEEE802154_FCF_ADDRESS_MODE_16BIT
+#define RFTemperatureHumiditySensor_DestinationAdressingMode    IEEE802154_FCF_ADDRESS_MODE_16BIT
+#define RFTemperatureHumiditySensor_SourceAdressingMode         IEEE802154_FCF_ADDRESS_MODE_16BIT
+
+/**
+ * ID of this sensor. Must be unique within the network
+*/
+#define RFTemperatureHumiditySensor_SensorID                    0x42
 
 /*******************| Type definitions |*******************************/
 

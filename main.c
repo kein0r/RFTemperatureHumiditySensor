@@ -22,7 +22,7 @@ void main( void )
 {
   volatile DHT22State_t DHT22State;
   sleepTimer_t sleepTime;
-  Board_init();
+  Board_init(); /* calls CC253x_Init */
   P0DIR_0 = HAL_PINOUTPUT;
   P0DIR_2 = HAL_PINOUTPUT;
   P0DIR_4 = HAL_PINOUTPUT;
@@ -31,17 +31,16 @@ void main( void )
   
   /* Prepare rx and tx  buffer for IEEE 802.15.4 (Must be done before interrupt enable) */
   IEEE802154_RxDataFrame.payload = radioRxPayload;
-  IEEE802154_RxDataFrame.payload = (IEEE802154_Payload*) &sensorInformation;
+  IEEE802154_TxDataFrame.payload = (IEEE802154_Payload*) &sensorInformation;
   
-  /* General radio configuration */
+  /* General radio configuration and set-up of IEEE 802.15.4 module */
   IEEE802154_Config.Channel = RFTemperatureHumiditySensor_Channel;
   IEEE802154_Config.PanID = RFTemperatureHumiditySensor_PanID;
   IEEE802154_Config.shortAddress = RFTemperatureHumiditySensor_ShortAddress;
-  
   IEEE802154_radioInit(&(IEEE802154_Config));
+  
   /* Tx source address is preloaded with chip's own 64bit address. For now we use 16bit source address. */
   IEEE802154_TxDataFrame.fcf.sourceAddressMode = IEEE802154_FCF_ADDRESS_MODE_16BIT;
-  enableAllInterrupt();
   /* Prepare header for IEEE 802.15.4 Tx message. */
   IEEE802154_TxDataFrame.fcf.frameType = IEEE802154_FCF_FRAME_TYPE_DATA;  /* 3: 0x01 */
   IEEE802154_TxDataFrame.fcf.securityEnabled = IEEE802154_FCF_SECURITY_DISABLED; /* 1: 0x0 */
@@ -68,9 +67,11 @@ void main( void )
   IEEE802154_TxDataFrame.sourceAddress.extendedAdress[5] = IEEE_EXTENDED_ADDRESS5;
   IEEE802154_TxDataFrame.sourceAddress.extendedAdress[6] = IEEE_EXTENDED_ADDRESS6;
   IEEE802154_TxDataFrame.sourceAddress.extendedAdress[7] = IEEE_EXTENDED_ADDRESS7;
-  sensorInformation.id = 0x42;
+  enableAllInterrupt();
+  
+  sensorInformation.id = RFTemperatureHumiditySensor_SensorID;
 
-  sleepTime.value = 0xffff;
+  sleepTime.value = 0x00ff;
   while(1)
   {
     ledOn();
@@ -78,8 +79,23 @@ void main( void )
     /* prepare values */
     sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
     sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
-    //IEE802154_radioSentDataFrame(&sentFrameOne, sizeof(sensorInformation_t));
+    IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     ledOff();
+    
+    DHT22State = DHT22_readValues();
+    /* prepare values */
+    sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
+    sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+    IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
+    ledOff();
+    
+    DHT22State = DHT22_readValues();
+    /* prepare values */
+    sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
+    sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+    IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
+    ledOff();
+    
     CC253x_IncrementSleepTimer(sleepTime);
     CC253x_ActivatePowerMode(SLEEPCMD_MODE_PM2);
   }
