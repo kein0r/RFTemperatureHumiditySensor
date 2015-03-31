@@ -40,7 +40,7 @@
 /**
  * Time in multiple of 1/32kHz for the sensor to sleep between two read-outs
 */
-#define RFTemperatureHumiditySensor_SleepTime                   (uint32_t)0xffff
+#define RFTemperatureHumiditySensor_SleepTime                   (uint32_t)0xfffff
 
 /*******************| Type definitions |*******************************/
 
