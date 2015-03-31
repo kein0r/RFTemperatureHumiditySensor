@@ -41,6 +41,7 @@
       <file>$PROJ_DIR$\dht22_cfg.h</file>
       <file>$PROJ_DIR$\DHT22\dht22.h</file>
       <file>$PROJ_DIR$\..\CC2530Bee\IEEE_802.15.4\IEEE_802.15.4.h</file>
+      <file>$PROJ_DIR$\..\CC2530Bee\CC2530Generic\board.c</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>

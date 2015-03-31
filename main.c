@@ -71,7 +71,8 @@ void main( void )
   
   sensorInformation.id = RFTemperatureHumiditySensor_SensorID;
 
-  sleepTime.value = 0x00ff;
+  sleepTime.value = RFTemperatureHumiditySensor_SleepTime;
+  
   while(1)
   {
     ledOn();
@@ -82,6 +83,7 @@ void main( void )
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     ledOff();
     
+    ledOn();
     DHT22State = DHT22_readValues();
     /* prepare values */
     sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
@@ -89,6 +91,7 @@ void main( void )
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     ledOff();
     
+    ledOn();
     DHT22State = DHT22_readValues();
     /* prepare values */
     sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
