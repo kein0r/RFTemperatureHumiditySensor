@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3899051861</fileChecksum>
+  <fileChecksum>3755348045</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
@@ -13,20 +13,21 @@
       <file>$PROJ_DIR$\CC253x\CC253x.h</file>
       <file>$PROJ_DIR$\CC253x\PlatformTypes.h</file>
       <file>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.h</file>
-      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
-      <file>$PROJ_DIR$\Sensors\DHT22\dht22.c</file>
       <file>$PROJ_DIR$\Sensors\DHT22\dht22.h</file>
+      <file>$PROJ_DIR$\Sensors\DHT22\dht22.c</file>
       <file>$PROJ_DIR$\Config.h</file>
-      <file>$PROJ_DIR$\IEEE_802.15.4_cfg.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$PROJ_DIR$\dht22_cfg.h</file>
       <file>$PROJ_DIR$\main.c</file>
-      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
-      <file>$PROJ_DIR$\CC253x\WatchdogTimer.h</file>
       <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\DHT22\dht22.c</file>
       <file>$PROJ_DIR$\Debug\Obj\CC253x.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
       <file>$PROJ_DIR$\Debug\Exe\RFTemperaturHumiditySensor.d51</file>
       <file>$PROJ_DIR$\RFTemperatureHumiditySensor.h</file>
+      <file>$PROJ_DIR$\DHT22\dht22.c</file>
+      <file>$PROJ_DIR$\CC253x\WatchdogTimer.h</file>
+      <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+      <file>$PROJ_DIR$\DHT22\dht22.h</file>
       <file>$PROJ_DIR$\Debug\Obj\IEEE_802.15.4.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\board.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\IEEE_802.15.4.pbi</file>
@@ -38,17 +39,22 @@
       <file>$PROJ_DIR$\Debug\Obj\dht22.pbi</file>
       <file>$TOOLKIT_DIR$\lib\clib\cl-pli-blxd-1e16x01.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\RFTemperaturHumiditySensor.pbd</file>
-      <file>$PROJ_DIR$\dht22_cfg.h</file>
-      <file>$PROJ_DIR$\DHT22\dht22.h</file>
-      <file>$PROJ_DIR$\..\CC2530Bee\IEEE_802.15.4\IEEE_802.15.4.h</file>
-      <file>$PROJ_DIR$\..\CC2530Bee\CC2530Generic\board.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\ADC.pbi</file>
+      <file>$PROJ_DIR$\CC253x\ADC.c</file>
+      <file>$PROJ_DIR$\CC253x\ADC.h</file>
+      <file>$PROJ_DIR$\gp2y1050.h_cfg.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\gp2y1050.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\gp2y1050.r51</file>
+      <file>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</file>
+      <file>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ADC.r51</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 19</file>
+          <file> 15</file>
         </tool>
       </outputs>
     </file>
@@ -57,21 +63,21 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 22</file>
+          <file> 23</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 24</file>
+          <file> 25</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 1 5 18 4</file>
+          <file> 1 5 19 4</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 1 5 18 4</file>
+          <file> 1 5 19 4</file>
         </tool>
       </inputs>
     </file>
@@ -80,21 +86,21 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 23</file>
+          <file> 24</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 21</file>
+          <file> 22</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 6 5 10 18 1</file>
+          <file> 6 5 9 19 1</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 6 5 10 18 1</file>
+          <file> 6 5 9 19 1</file>
         </tool>
       </inputs>
     </file>
@@ -103,21 +109,21 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 17</file>
+          <file> 14</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 28</file>
+          <file> 29</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 4 18 5</file>
+          <file> 4 19 5</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 4 18 5</file>
+          <file> 4 19 5</file>
         </tool>
       </inputs>
     </file>
@@ -126,30 +132,7 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 29</file>
-        </tool>
-        <tool>
-          <name>ICC8051</name>
-          <file> 26</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 9 5 32 1 18</file>
-        </tool>
-        <tool>
-          <name>ICC8051</name>
-          <file> 9 5 32 1 18</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 15</file>
+          <file> 30</file>
         </tool>
         <tool>
           <name>ICC8051</name>
@@ -159,30 +142,30 @@
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 18 5 1 14 10 6 4 13 7 9 20</file>
+          <file> 7 5 11 1 19</file>
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 18 5 1 14 10 6 4 13 7 9 20</file>
+          <file> 7 5 11 1 19</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\DHT22\dht22.c</name>
+      <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 29</file>
-        </tool>
-        <tool>
-          <name>ICC8051</name>
-          <file> 26</file>
+          <file> 13</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
+          <name>BICOMP</name>
+          <file> 19 5 1 18 9 6 4 20 10 7 35 16</file>
+        </tool>
+        <tool>
           <name>ICC8051</name>
-          <file> 33 5 32 1 18</file>
+          <file> 19 5 1 18 9 6 4 20 10 7 35 16</file>
         </tool>
       </inputs>
     </file>
@@ -191,13 +174,78 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 25 24 28 26 21 27 30</file>
+          <file> 26 41 25 29 27 38 22 28 31</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\DHT22\dht22.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 27</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 21 5 11 1 19</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC253x\ADC.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 35 5 9 4 19</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 38</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 40 5</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 40 5 36 1 19</file>
         </tool>
       </inputs>
     </file>
     <forcedrebuild>
       <name>$PROJ_DIR$\DHT22\dht22.c</name>
       <tool>ICC8051</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
     </forcedrebuild>
   </configuration>
   <configuration>

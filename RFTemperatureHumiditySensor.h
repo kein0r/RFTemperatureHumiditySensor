@@ -53,8 +53,10 @@
   */
 typedef struct {
   uint8_t id;                     /*!< message id must always come first */
-  sint16_t dht22Temperatur;       /*!< temperatur of dht22 */
+  sint16_t dht22Temperature;       /*!< temperatur of dht22 */
   uint16_t dht22RelativeHumidity; /*!< relative humidity of dht22 */
+  uint16_t internalTemperatureSensor; /*!< SOC internal temperature sensor connected to one of the ADC channel */
+  float sharpParticleConcentration;
 } sensorInformation_t;
 
 /*******************| Global variables |*******************************/

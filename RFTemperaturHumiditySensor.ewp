@@ -2180,6 +2180,12 @@
   <group>
     <name>CC253x</name>
     <file>
+      <name>$PROJ_DIR$\CC253x\ADC.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC253x\ADC.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\CC253x\CC253x.c</name>
     </file>
     <file>
@@ -2209,6 +2215,15 @@
         <name>$PROJ_DIR$\Sensors\DHT22\dht22.h</name>
       </file>
     </group>
+    <group>
+      <name>GP2Y1050</name>
+      <file>
+        <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.h</name>
+      </file>
+    </group>
   </group>
   <file>
     <name>$PROJ_DIR$\Config.h</name>
@@ -2217,7 +2232,13 @@
     <name>$PROJ_DIR$\dht22_cfg.h</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\gp2y1050.h_cfg.h</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\RFTemperatureHumiditySensor.h</name>
   </file>
 </project>
 

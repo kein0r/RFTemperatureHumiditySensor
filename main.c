@@ -9,6 +9,7 @@
 #include <CC253x.h>
 #include <string.h>
 #include <DHT22.h>
+#include <ADC.h>
 #include "RFTemperatureHumiditySensor.h"
 
 IEEE802154_Config_t IEEE802154_Config;
@@ -18,14 +19,19 @@ IEEE802154_DataFrameHeader_t  IEEE802154_RxDataFrame;
 IEEE802154_Payload radioRxPayload[100];
 sensorInformation_t sensorInformation;
 
+void measureAllValues();
+
 void main( void )
 {
-  volatile DHT22State_t DHT22State;
   sleepTimer_t sleepTime;
   Board_init(); /* calls CC253x_Init */
   P0DIR_0 = HAL_PINOUTPUT;
   P0DIR_2 = HAL_PINOUTPUT;
   P0DIR_4 = HAL_PINOUTPUT;
+  
+  ADC_init(APCFG_ADCINPUT0);
+  ADC_connectTemperaturSensorToADC();
+  
   ledInit();
   DHT22_init();
   
@@ -75,33 +81,36 @@ void main( void )
   
   while(1)
   {
-    ledOn();
-    DHT22State = DHT22_readValues();
-    /* prepare values */
-    sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
-    sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+
+    measureAllValues();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
-    ledOff();
     
-    ledOn();
-    DHT22State = DHT22_readValues();
-    /* prepare values */
-    sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
-    sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+    measureAllValues();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
-    ledOff();
     
-    ledOn();
-    DHT22State = DHT22_readValues();
-    /* prepare values */
-    sensorInformation.dht22Temperatur = DHT22_SensorValue.values.Temperatur;
-    sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+    measureAllValues();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
-    ledOff();
     
     CC253x_IncrementSleepTimer(sleepTime);
     CC253x_ActivatePowerMode(SLEEPCMD_MODE_PM2);
   }
+}
+
+void measureAllValues()
+{
+  volatile DHT22State_t DHT22State;
+  
+  ledOn();
+  DHT22State = DHT22_readValues();
+  /* wait for ADC conversion to finish */
+  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_AIN0 );
+  while (ADC_isConversionComplete()) ;
+  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_TEMPERATURESENSOR );
+  while (ADC_isConversionComplete()) ;
+  /* prepare values */
+  sensorInformation.dht22Temperature = DHT22_SensorValue.values.Temperatur;
+  sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+  ledOff();
 }
 
 /**
