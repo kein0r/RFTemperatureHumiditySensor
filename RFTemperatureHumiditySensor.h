@@ -42,6 +42,11 @@
 */
 #define RFTemperatureHumiditySensor_SleepTime                   (uint32_t)0xfffff
 
+/**
+ * NUmber of consecutive readouts of sharp particle sensor
+*/
+#define NUMBEROFSHARPSENSORREADOUTS                             (uint8_t)10
+
 /*******************| Type definitions |*******************************/
 
 /**
@@ -52,11 +57,13 @@
   * to which the payload pointer of the IEE802154_header_t will point.
   */
 typedef struct {
-  uint8_t id;                     /*!< message id must always come first */
-  sint16_t dht22Temperature;       /*!< temperatur of dht22 */
-  uint16_t dht22RelativeHumidity; /*!< relative humidity of dht22 */
-  uint16_t internalTemperatureSensor; /*!< SOC internal temperature sensor connected to one of the ADC channel */
-  float sharpParticleConcentration;
+  uint8_t id;                                   /*!< message id must always come first */
+  sint16_t dht22Temperature;                    /*!< temperatur of dht22 */
+  uint16_t dht22RelativeHumidity;               /*!< relative humidity of dht22 */
+  uint16_t internalTemperatureSensor;           /*!< SOC internal temperature sensor connected to one of the ADC channel */
+  float averageSharpParticleConcentration;      /*!< averrage particle concentration */
+  float minSharpParticleConcentration;          /*!< Minimum particle concentration */
+  float maxSharpParticleConcentration;          /*!< Maximum particle concentration */
 } sensorInformation_t;
 
 /*******************| Global variables |*******************************/

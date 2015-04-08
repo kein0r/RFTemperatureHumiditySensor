@@ -25,11 +25,11 @@ void main( void )
 {
   sleepTimer_t sleepTime;
   Board_init(); /* calls CC253x_Init */
-  P0DIR_0 = HAL_PINOUTPUT;
+  //P0DIR_0 = HAL_PINOUTPUT;
   P0DIR_2 = HAL_PINOUTPUT;
   P0DIR_4 = HAL_PINOUTPUT;
   
-  ADC_init(APCFG_ADCINPUT0);
+  ADC_init(APCFG_ADCINPUT0, ADCCON1_STSEL_ADCON1STEL);
   ADC_connectTemperaturSensorToADC();
   
   ledInit();
@@ -99,17 +99,40 @@ void main( void )
 void measureAllValues()
 {
   volatile DHT22State_t DHT22State;
+  uint16_t particleSensorValue;
   
   ledOn();
+  
+  /* read internal and external temperatur sensor */
   DHT22State = DHT22_readValues();
-  /* wait for ADC conversion to finish */
-  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_AIN0 );
-  while (ADC_isConversionComplete()) ;
-  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_TEMPERATURESENSOR );
-  while (ADC_isConversionComplete()) ;
   /* prepare values */
   sensorInformation.dht22Temperature = DHT22_SensorValue.values.Temperatur;
   sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
+  
+  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_VDD3 );
+  /* wait for ADC conversion to finish */
+  while (ADC_isConversionComplete()) ;
+  sensorInformation.internalTemperatureSensor = ADC_readSingleConversionValue();
+  
+  sensorInformation.averageSharpParticleConcentration = 0;
+  sensorInformation.minSharpParticleConcentration = 0xffffffff;
+  sensorInformation.maxSharpParticleConcentration = 0x0;
+  for (int i=0; i<NUMBEROFSHARPSENSORREADOUTS; i++)
+  {
+    ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_AIN0 );
+    /* wait for ADC conversion to finish */
+    while (ADC_isConversionComplete()) ;
+    particleSensorValue = ADC_readSingleConversionValue();
+    if (particleSensorValue > sensorInformation.maxSharpParticleConcentration)
+    {
+      sensorInformation.maxSharpParticleConcentration = particleSensorValue;
+    }
+    if (particleSensorValue < sensorInformation.minSharpParticleConcentration)
+    {
+      sensorInformation.minSharpParticleConcentration = particleSensorValue;
+    }
+    sensorInformation.averageSharpParticleConcentration += particleSensorValue;
+  }
   ledOff();
 }
 

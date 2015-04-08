@@ -157,6 +157,10 @@
           <name>BICOMP</name>
           <file> 13</file>
         </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 28</file>
+        </tool>
       </outputs>
       <inputs>
         <tool>
@@ -204,12 +208,12 @@
           <name>BICOMP</name>
           <file> 33</file>
         </tool>
-        <tool>
-          <name>ICC8051</name>
-          <file> 41</file>
-        </tool>
       </outputs>
       <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35 5 9 4 19</file>
+        </tool>
         <tool>
           <name>ICC8051</name>
           <file> 35 5 9 4 19</file>
@@ -242,10 +246,6 @@
     <forcedrebuild>
       <name>$PROJ_DIR$\DHT22\dht22.c</name>
       <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>[MULTI_TOOL]</name>
-      <tool>XLINK</tool>
     </forcedrebuild>
   </configuration>
   <configuration>
