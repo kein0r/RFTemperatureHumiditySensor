@@ -208,6 +208,10 @@
           <name>BICOMP</name>
           <file> 33</file>
         </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 41</file>
+        </tool>
       </outputs>
       <inputs>
         <tool>

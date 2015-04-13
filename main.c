@@ -99,7 +99,7 @@ void main( void )
 void measureAllValues()
 {
   volatile DHT22State_t DHT22State;
-  uint16_t particleSensorValue;
+  ADC_ADCValue_t particleSensorValue;
   
   ledOn();
   
@@ -109,7 +109,7 @@ void measureAllValues()
   sensorInformation.dht22Temperature = DHT22_SensorValue.values.Temperatur;
   sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
   
-  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_VDD3 );
+  ADC_startSingleConversion( ADCCON3_EREF_INTERNAL | ADCCON3_SDIV_12BITS_ENOB | ADCCON3_SCH_TEMPERATURESENSOR );
   /* wait for ADC conversion to finish */
   while (ADC_isConversionComplete()) ;
   sensorInformation.internalTemperatureSensor = ADC_readSingleConversionValue();
