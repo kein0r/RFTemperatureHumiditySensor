@@ -25,9 +25,9 @@ void main( void )
 {
   sleepTimer_t sleepTime;
   Board_init(); /* calls CC253x_Init */
-  //P0DIR_0 = HAL_PINOUTPUT;
-  P0DIR_2 = HAL_PINOUTPUT;
-  P0DIR_4 = HAL_PINOUTPUT;
+  //P0DIR_0 = Px_PINOUTPUT;
+  P0DIR_2 = Px_PINOUTPUT;
+  P0DIR_4 = Px_PINOUTPUT;
   
   ADC_init(APCFG_ADCINPUT0, ADCCON1_STSEL_ADCON1STEL);
   ADC_connectTemperaturSensorToADC();

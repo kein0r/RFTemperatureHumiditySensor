@@ -6,6 +6,7 @@
 
 /*******************| Inclusions |*************************************/
 #include <board.h>
+#include <CC253x.h>
 #include <ioCC2530.h>
    
 /*******************| Macros |*****************************************/ 
@@ -21,18 +22,18 @@
 /*
  * use macros from HAL layer for internal comparison.
 */
-#define DHT22_DATALINE_LOW              (uint8_t)HAL_LOW
-#define DHT22_DATALINE_HIGH             (uint8_t)HAL_HIGH
+#define DHT22_DATALINE_LOW              (uint8_t)Px_LOW
+#define DHT22_DATALINE_HIGH             (uint8_t)Px_HIGH
 
 /*
  * Platform specific function to set data line to output
 */ 
-#define DHT22_SetDataLineOutput()       P0DIR_4 = HAL_PINOUTPUT
+#define DHT22_SetDataLineOutput()       P0DIR_4 = Px_PINOUTPUT
 
 /*
  * Platform specific function to set data line to input
 */ 
-#define DHT22_SetDataLineInput()        P0DIR_4 = HAL_PININPUT
+#define DHT22_SetDataLineInput()        P0DIR_4 = Px_PININPUT
 
 /*
  * Platform specific function to write logic low to sensor
