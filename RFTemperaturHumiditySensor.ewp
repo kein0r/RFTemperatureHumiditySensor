@@ -2194,6 +2194,12 @@
     <file>
       <name>$PROJ_DIR$\CC253x\PlatformTypes.h</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\CC253x\Timer1.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC253x\Timer1.h</name>
+    </file>
   </group>
   <group>
     <name>IEEE_802.15.4</name>
@@ -2222,6 +2228,15 @@
       </file>
       <file>
         <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.h</name>
+      </file>
+    </group>
+    <group>
+      <name>PPD42NS</name>
+      <file>
+        <name>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.h</name>
       </file>
     </group>
   </group>

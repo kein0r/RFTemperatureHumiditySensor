@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1584185637
+Checksum=1982227979
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -55,8 +55,7 @@ Placement=_ 498 289 943 571
 Show=1 1
 Sort=4 0
 [struct_types]
-Fmt0=sensorInformation_t-dht22Temperatur	3	0
-Fmt1=sleepTimer_t-value	4	0
+Fmt0=sleepTimer_t-value	4	0
 [array_types]
 Fmt0=uint8 [5]	1	0
 [watch_formats]
@@ -65,17 +64,16 @@ Fmt1={W}0:test1	1	0
 Fmt2={W}0:test2	1	0
 Fmt3={W}0:test3	1	0
 Fmt4={W}0:test4	1	0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
 Category=_ 0
-[TermIOLog]
-LoggingEnabled=_ 0
-LogFile=_ ""
 [Breakpoints]
 Bp0=_ "STD_CODE" "{$PROJ_DIR$\main.c}.115.49" 1 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\main.c}.125.27" 1 0 0 0 "" 0 ""
-Count=2
+Count=1
 [ChipconEmu]
 Stop timers on halt=1
 Leave target running=1

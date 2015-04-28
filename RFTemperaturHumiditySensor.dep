@@ -2,37 +2,14 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3755348045</fileChecksum>
+  <fileChecksum>1166037565</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\CC2530Generic\board.c</file>
-      <file>$PROJ_DIR$\CC2530Generic\board.h</file>
-      <file>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.c</file>
-      <file>$PROJ_DIR$\CC253x\ADC.c</file>
-      <file>$PROJ_DIR$\CC253x\ADC.h</file>
-      <file>$PROJ_DIR$\CC253x\CC253x.c</file>
-      <file>$PROJ_DIR$\CC253x\CC253x.h</file>
-      <file>$PROJ_DIR$\CC253x\PlatformTypes.h</file>
-      <file>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.h</file>
-      <file>$PROJ_DIR$\RFTemperatureHumiditySensor.h</file>
-      <file>$PROJ_DIR$\Sensors\DHT22\dht22.c</file>
-      <file>$PROJ_DIR$\Sensors\DHT22\dht22.h</file>
-      <file>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</file>
-      <file>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.h</file>
-      <file>$PROJ_DIR$\Config.h</file>
-      <file>$PROJ_DIR$\dht22_cfg.h</file>
-      <file>$PROJ_DIR$\gp2y1050.h_cfg.h</file>
-      <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\gp2y1050.pbi</file>
       <file>$PROJ_DIR$\Debug\Exe\RFTemperaturHumiditySensor.d51</file>
       <file>$PROJ_DIR$\DHT22\dht22.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\gp2y1050.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
-      <file>$PROJ_DIR$\CC253x\WatchdogTimer.h</file>
-      <file>$PROJ_DIR$\DHT22\dht22.c</file>
-      <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl-pli-blxd-1e16x01.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\CC253x.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\IEEE_802.15.4.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\board.pbi</file>
@@ -41,20 +18,60 @@
       <file>$TOOLKIT_DIR$\config\devices\Texas Instruments\lnk51ew_cc2530F256_banked.xcl</file>
       <file>$PROJ_DIR$\Debug\Obj\dht22.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
-      <file>$PROJ_DIR$\Debug\Obj\CC253x.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\dht22.pbi</file>
-      <file>$TOOLKIT_DIR$\lib\clib\cl-pli-blxd-1e16x01.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\Timer1.pbi</file>
+      <file>$PROJ_DIR$\CC253x\WatchdogTimer.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+      <file>$PROJ_DIR$\CC253x\Timer1.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+      <file>$PROJ_DIR$\CC2530Generic\board.c</file>
+      <file>$PROJ_DIR$\CC253x\ADC.c</file>
+      <file>$PROJ_DIR$\CC253x\PlatformTypes.h</file>
+      <file>$PROJ_DIR$\CC253x\ADC.h</file>
+      <file>$PROJ_DIR$\CC253x\CC253x.c</file>
+      <file>$PROJ_DIR$\CC253x\CC253x.h</file>
+      <file>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.c</file>
+      <file>$PROJ_DIR$\CC2530Generic\board.h</file>
+      <file>$PROJ_DIR$\CC253x\Timer1.c</file>
       <file>$PROJ_DIR$\Debug\Obj\RFTemperaturHumiditySensor.pbd</file>
       <file>$PROJ_DIR$\Debug\Obj\ADC.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\gp2y1050.r51</file>
       <file>$PROJ_DIR$\Debug\Obj\ADC.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\Timer1.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\ppd42ns.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\ppd42ns.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC253x.r51</file>
+      <file>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</file>
+      <file>$PROJ_DIR$\Sensors\DHT22\dht22.h</file>
+      <file>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.c</file>
+      <file>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.h</file>
+      <file>$PROJ_DIR$\Sensors\DHT22\dht22.c</file>
+      <file>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.h</file>
+      <file>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.h</file>
+      <file>$PROJ_DIR$\Config.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\DHT22\dht22.c</file>
+      <file>$PROJ_DIR$\gp2y1050.h_cfg.h</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\RFTemperatureHumiditySensor.h</file>
+      <file>$PROJ_DIR$\dht22_cfg.h</file>
     </outputs>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\RFTemperaturHumiditySensor.d51</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 9 31 8 35 10 30 5 11 33 32 3</file>
+        </tool>
+      </inputs>
+    </file>
     <file>
       <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 20</file>
+          <file> 1</file>
         </tool>
       </outputs>
     </file>
@@ -62,45 +79,22 @@
       <name>$PROJ_DIR$\CC2530Generic\board.c</name>
       <outputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 31</file>
+          <name>BICOMP</name>
+          <file> 6</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 29</file>
+          <name>ICC8051</name>
+          <file> 8</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 1 7 26 6</file>
-        </tool>
-        <tool>
           <name>BICOMP</name>
-          <file> 1 7 26 6</file>
+          <file> 26 21 16 24</file>
         </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.c</name>
-      <outputs>
         <tool>
           <name>ICC8051</name>
-          <file> 28</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 30</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC8051</name>
-          <file> 8 7 14 26 1</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 8 7 14 26 1</file>
+          <file> 26 21 16 24</file>
         </tool>
       </inputs>
     </file>
@@ -108,22 +102,22 @@
       <name>$PROJ_DIR$\CC253x\ADC.c</name>
       <outputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 41</file>
+          <name>BICOMP</name>
+          <file> 29</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 39</file>
+          <name>ICC8051</name>
+          <file> 31</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 4 7 14 6 26</file>
+          <name>BICOMP</name>
+          <file> 22 21 43 24 16</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 4 7 14 6 26</file>
+          <name>ICC8051</name>
+          <file> 22 21 43 24 16</file>
         </tool>
       </inputs>
     </file>
@@ -131,22 +125,114 @@
       <name>$PROJ_DIR$\CC253x\CC253x.c</name>
       <outputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 35</file>
+          <name>BICOMP</name>
+          <file> 4</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 27</file>
+          <name>ICC8051</name>
+          <file> 35</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 6 26 7</file>
+          <name>BICOMP</name>
+          <file> 24 16 21</file>
         </tool>
         <tool>
+          <name>ICC8051</name>
+          <file> 24 16 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.c</name>
+      <outputs>
+        <tool>
           <name>BICOMP</name>
-          <file> 6 26 7</file>
+          <file> 7</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 21 43 16 24</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 42 21 43 16 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC253x\Timer1.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17 21 16</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 17 21 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 30</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 41 21</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 41 21 46 26 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 33</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39 21 16 24 17</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 39 21 16 24 17</file>
         </tool>
       </inputs>
     </file>
@@ -155,72 +241,21 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 36</file>
+          <file> 12</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 10</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 11 7 15 1 26</file>
-        </tool>
-        <tool>
           <name>BICOMP</name>
-          <file> 11 7 15 1 26 6</file>
+          <file> 37 21 49 26 16 24</file>
         </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</name>
-      <outputs>
         <tool>
           <name>ICC8051</name>
-          <file> 40</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 22</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC8051</name>
-          <file> 13 7 16 1 26</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 13 7</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>ICC8051</name>
-          <file> 34</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 18</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC8051</name>
-          <file> 26 7 1 24 14 8 6 23 19 11 4 9</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 26 7 1 24 14 8 6 23 19 11 4 9</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Exe\RFTemperaturHumiditySensor.d51</name>
-      <inputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 32 41 31 35 33 40 28 34 37</file>
+          <file> 37 21 49 26 16 24</file>
         </tool>
       </inputs>
     </file>
@@ -228,18 +263,41 @@
       <name>$PROJ_DIR$\DHT22\dht22.c</name>
       <outputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 33</file>
+          <name>BICOMP</name>
+          <file> 12</file>
         </tool>
         <tool>
-          <name>BICOMP</name>
-          <file> 36</file>
+          <name>ICC8051</name>
+          <file> 10</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICC8051</name>
-          <file> 21 7 15 1 26</file>
+          <file> 2 21 49 26 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 11</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 21 26 14 43 42 24 18 15 37 22 48</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 16 21 26 14 43 42 24 18 15 37 22 48</file>
         </tool>
       </inputs>
     </file>
