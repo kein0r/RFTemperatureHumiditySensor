@@ -267,7 +267,7 @@
         </tool>
         <tool>
           <name>ICC8051</name>
-          <file> 38 7 1 36 18 10 6 32 37 13 4</file>
+          <file> 38 7 1 36 18 10 6 32 37 13 4 17 11</file>
         </tool>
       </inputs>
     </file>
@@ -280,42 +280,6 @@
         </tool>
       </inputs>
     </file>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\CC2530Generic\board.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\IEEE_802.15.4\IEEE_802.15.4.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\CC253x\ADC.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\CC253x\CC253x.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\CC253x\Timer1.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\Sensors\DHT22\dht22.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\Sensors\GP2Y1050\gp2y1050.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
-    <forcedrebuild>
-      <name>$PROJ_DIR$\main.c</name>
-      <tool>ICC8051</tool>
-    </forcedrebuild>
   </configuration>
   <configuration>
     <name>Release</name>

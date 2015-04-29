@@ -102,7 +102,9 @@ void main( void )
 void measureAllValues()
 {
   volatile DHT22State_t DHT22State;
+#ifdef USE_GP2Y1050SENSOR
   ADC_ADCValue_t particleSensorValue;
+#endif
   
   ledOn();
   
