@@ -465,6 +465,7 @@
           <name>CCIncludePath2</name>
           <state>$PROJ_DIR$</state>
           <state>$PROJ_DIR$/Sensors/DHT22</state>
+          <state>$PROJ_DIR$/Sensors/PPD42NS</state>
           <state>$PROJ_DIR$/CC2530Generic</state>
           <state>$PROJ_DIR$/CC253x</state>
           <state>$PROJ_DIR$/IEEE_802.15.4</state>

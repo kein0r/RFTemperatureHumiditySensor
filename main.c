@@ -10,6 +10,7 @@
 #include <string.h>
 #include <DHT22.h>
 #include <ADC.h>
+#include <ppd42ns.h>
 #include "RFTemperatureHumiditySensor.h"
 
 IEEE802154_Config_t IEEE802154_Config;
@@ -116,6 +117,7 @@ void measureAllValues()
   while (ADC_isConversionComplete()) ;
   sensorInformation.internalTemperatureSensor = ADC_readSingleConversionValue();
   
+#ifdef USE_GP2Y1050SENSOR
   sensorInformation.averageSharpParticleConcentration = 0;
   sensorInformation.minSharpParticleConcentration = 0xffffffff;
   sensorInformation.maxSharpParticleConcentration = 0x0;
@@ -135,6 +137,7 @@ void measureAllValues()
     }
     sensorInformation.averageSharpParticleConcentration += particleSensorValue;
   }
+#endif
   ledOff();
 }
 

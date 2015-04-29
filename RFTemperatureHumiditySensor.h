@@ -61,9 +61,11 @@ typedef struct {
   sint16_t dht22Temperature;                    /*!< temperatur of dht22 */
   uint16_t dht22RelativeHumidity;               /*!< relative humidity of dht22 */
   uint16_t internalTemperatureSensor;           /*!< SOC internal temperature sensor connected to one of the ADC channel */
+#ifdef USE_GP2Y1050SENSOR
   float averageSharpParticleConcentration;      /*!< averrage particle concentration */
   float minSharpParticleConcentration;          /*!< Minimum particle concentration */
   float maxSharpParticleConcentration;          /*!< Maximum particle concentration */
+#endif
 } sensorInformation_t;
 
 /*******************| Global variables |*******************************/
