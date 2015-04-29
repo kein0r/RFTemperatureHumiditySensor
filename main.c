@@ -32,6 +32,8 @@ void main( void )
   ADC_init(APCFG_ADCINPUT0, ADCCON1_STSEL_ADCON1STEL);
   ADC_connectTemperaturSensorToADC();
   
+  PPD42NS_init();
+  
   ledInit();
   DHT22_init();
   
