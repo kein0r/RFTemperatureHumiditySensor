@@ -140,6 +140,7 @@ void measureAllValues()
     sensorInformation.averageSharpParticleConcentration += particleSensorValue;
   }
 #endif
+  PPD42NS_waitForNextSenorValue();
   ledOff();
 }
 
