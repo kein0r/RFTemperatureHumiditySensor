@@ -20,6 +20,17 @@ IEEE802154_DataFrameHeader_t  IEEE802154_RxDataFrame;
 IEEE802154_Payload radioRxPayload[100];
 sensorInformation_t sensorInformation;
 
+/**
+ * \mainpage RF TemperaturHumidity and Airquality
+ * @brief IEEE 802.15.4 sensor for Temperature, Humidity and Airquality
+ * 
+ * The following sensors are connected to the board. All sensors are connected to P0.
+ * - PPD42NS P1 (1um) is connected to P0.2, P2 (2.5um) is connected P0.3
+ * - Second PPD42NS P1 (1um) is connected to P0.4, P2 (2.5um) is connected P0.5
+ * - DHT22 is connected to P0.7
+ * - Internal temperature sensor is connected to ADC channel 14
+ */
+
 void measureAllValues();
 
 void main( void )

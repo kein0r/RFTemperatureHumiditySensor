@@ -33,22 +33,22 @@
 /*
  * Platform specific function to set data line to input
 */ 
-#define DHT22_SetDataLineInput()        P0DIR_4 = Px_PININPUT
+#define DHT22_SetDataLineInput()        P0DIR_7 = Px_PININPUT
 
 /*
  * Platform specific function to write logic low to sensor
 */ 
-#define DHT22_WriteDataBitLow()         P0_4 = DHT22_DATALINE_LOW
+#define DHT22_WriteDataBitLow()         P0_7 = DHT22_DATALINE_LOW
 
 /*
  * Platform specific function to write logic high to sensor
 */ 
-#define DHT22_WriteDataBitHigh()        P0_4 = DHT22_DATALINE_HIGH
+#define DHT22_WriteDataBitHigh()        P0_7 = DHT22_DATALINE_HIGH
 
 /*
  * Platform specific function to read bit from data line
 */ 
-#define DHT22_ReadDataBit()             P0_4
+#define DHT22_ReadDataBit()             P0_7
 
 /**
  * Number of uS to wait using delay_us function for the start signal of the MCU. 
