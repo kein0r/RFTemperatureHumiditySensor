@@ -26,9 +26,7 @@ void main( void )
 {
   sleepTimer_t sleepTime;
   Board_init(); /* calls CC253x_Init */
-  //P0DIR_0 = Px_PINOUTPUT;
-  P0DIR_2 = Px_PINOUTPUT;
-  P0DIR_4 = Px_PINOUTPUT;
+  /* P0.2 to P0.4 are used for peripheral function timer 1 input capture (channel 0 to 4) for PPD42NS sensor */
   
   ADC_init(APCFG_ADCINPUT0, ADCCON1_STSEL_ADCON1STEL);
   ADC_connectTemperaturSensorToADC();
