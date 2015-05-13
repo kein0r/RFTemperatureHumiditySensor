@@ -230,10 +230,6 @@
       <name>$PROJ_DIR$\Sensors\PPD42NS\ppd42ns.c</name>
       <outputs>
         <tool>
-          <name>ICC8051</name>
-          <file> 38</file>
-        </tool>
-        <tool>
           <name>BICOMP</name>
           <file> 39</file>
         </tool>
