@@ -38,6 +38,11 @@
 */
 #define USART_RING_BUFFER_SIZE   32
 
+/**
+ * Defined if a second Shinyei PPD42NS sensor is connected 
+ */
+#define PPD42NS_SENSOR1CONNECTED
+
 /*******************| Type definitions |*******************************/
 
 /*******************| Type definitions |*******************************/
