@@ -29,6 +29,8 @@ sensorInformation_t sensorInformation;
  * - Second PPD42NS P1 (1um) is connected to P0.4, P2 (2.5um) is connected P0.5
  * - DHT22 is connected to P0.7
  * - Internal temperature sensor is connected to ADC channel 14
+ * Sensor will sent three messages. First and second message will only contain temperature
+ * and humidity, third message will, after 30 seconds, contain particle value also.
  */
 
 void measureAllValues();

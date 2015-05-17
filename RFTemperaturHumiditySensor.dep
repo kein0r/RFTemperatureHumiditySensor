@@ -254,6 +254,10 @@
       </outputs>
       <inputs>
         <tool>
+          <name>BICOMP</name>
+          <file> 23 7 1 30 18 10 6 44 29 13 4 17 11</file>
+        </tool>
+        <tool>
           <name>ICC8051</name>
           <file> 23 7 1 30 18 10 6 44 29 13 4 17 11</file>
         </tool>
@@ -277,10 +281,6 @@
         </tool>
       </outputs>
     </file>
-    <forcedrebuild>
-      <name>[MULTI_TOOL]</name>
-      <tool>XLINK</tool>
-    </forcedrebuild>
   </configuration>
   <configuration>
     <name>Release</name>
