@@ -100,18 +100,24 @@ void main( void )
     sensorInformation.ppd42ns1umParticleConcentration = 0.0;
     sensorInformation.ppd42ns25umParticleConcentration = 0.0;
 
+    ledOn();
     measureAllValues();
+    ledOff();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
+    ledOn();
     measureAllValues();
+    ledOff();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
+    ledOn();
     measureAllValues();
    /* Because PPD42NS needs aprox 30s for a complete sensor read-out we wait after we read
     * the other values */
     PPD42NS_waitForNextSenorValue();
     PPD42NS_readSensor0P1Value(&sensorInformation.ppd42ns1umParticleConcentration);
     PPD42NS_readSensor0P2Value(&sensorInformation.ppd42ns25umParticleConcentration);
+    ledOff();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
     CC253x_IncrementSleepTimer(sleepTime);
@@ -125,8 +131,6 @@ void measureAllValues()
 #ifdef USE_GP2Y1050SENSOR
   ADC_ADCValue_t particleSensorValue;
 #endif
-  
-  ledOn();
   
   /* read internal and external temperatur sensor */
   DHT22State = DHT22_readValues();
@@ -161,7 +165,6 @@ void measureAllValues()
     sensorInformation.averageSharpParticleConcentration += particleSensorValue;
   }
 #endif
-  ledOff();
 }
 
 /**
