@@ -41,7 +41,7 @@
 /**
  * Defined if a second Shinyei PPD42NS sensor is connected 
  */
-#define PPD42NS_SENSOR1CONNECTED
+//#define PPD42NS_SENSOR1CONNECTED
 
 /*******************| Type definitions |*******************************/
 
