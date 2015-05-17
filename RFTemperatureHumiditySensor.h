@@ -39,11 +39,12 @@
 
 /**
  * Time in multiple of 1/32kHz for the sensor to sleep between two read-outs
+ * 0xfffff: 1.048.575/32.000 approx. 32-33 seconds
 */
 #define RFTemperatureHumiditySensor_SleepTime                   (uint32_t)0xfffff
 
 /**
- * NUmber of consecutive readouts of sharp particle sensor
+ * Number of consecutive readouts of sharp particle sensor
 */
 #define NUMBEROFSHARPSENSORREADOUTS                             (uint8_t)10
 
@@ -66,6 +67,9 @@ typedef struct {
   float minSharpParticleConcentration;          /*!< Minimum particle concentration */
   float maxSharpParticleConcentration;          /*!< Maximum particle concentration */
 #endif
+  float ppd42ns1umParticleConcentration;        /*!< Sinyei PPD42NS sensor read-out of P1 "around 1 micro meter" [particle/m^3] */
+  float ppd42ns25umParticleConcentration;       /*!< Sinyei PPD42NS sensor read-out of P2 [particle/m^3] */
+  
 } sensorInformation_t;
 
 /*******************| Global variables |*******************************/

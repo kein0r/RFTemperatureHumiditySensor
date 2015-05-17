@@ -94,6 +94,10 @@ void main( void )
   while(1)
   {
 
+    /* reset values for PPD42NS because first two messages will be sent without */
+    sensorInformation.ppd42ns1umParticleConcentration = 0.0;
+    sensorInformation.ppd42ns25umParticleConcentration = 0.0;
+
     measureAllValues();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
@@ -101,6 +105,11 @@ void main( void )
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
     measureAllValues();
+   /* Because PPD42NS needs aprox 30s for a complete sensor read-out we wait after we read
+    * the other values */
+    PPD42NS_waitForNextSenorValue();
+    PPD42NS_readSensor0P1Value(&sensorInformation.ppd42ns1umParticleConcentration);
+    PPD42NS_readSensor0P2Value(&sensorInformation.ppd42ns25umParticleConcentration);
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
     CC253x_IncrementSleepTimer(sleepTime);
@@ -119,6 +128,7 @@ void measureAllValues()
   
   /* read internal and external temperatur sensor */
   DHT22State = DHT22_readValues();
+  
   /* prepare values */
   sensorInformation.dht22Temperature = DHT22_SensorValue.values.Temperatur;
   sensorInformation.dht22RelativeHumidity = DHT22_SensorValue.values.RelativeHumidity;
@@ -149,7 +159,6 @@ void measureAllValues()
     sensorInformation.averageSharpParticleConcentration += particleSensorValue;
   }
 #endif
-  PPD42NS_waitForNextSenorValue();
   ledOff();
 }
 
