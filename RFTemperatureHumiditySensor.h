@@ -67,9 +67,14 @@ typedef struct {
   float minSharpParticleConcentration;          /*!< Minimum particle concentration */
   float maxSharpParticleConcentration;          /*!< Maximum particle concentration */
 #endif
-  float ppd42ns1umParticleConcentration;        /*!< Sinyei PPD42NS sensor read-out of P1 "around 1 micro meter" [particle/m^3] */
-  float ppd42ns25umParticleConcentration;       /*!< Sinyei PPD42NS sensor read-out of P2 [particle/m^3] */
-  
+#ifdef PPD42NS_SENSOR0CONNECTED
+  float ppd42ns1umParticleConcentrationSensor0;        /*!< Sinyei PPD42NS sensor read-out of P1 "around 1 micro meter" [particle/m^3] */
+  float ppd42ns25umParticleConcentrationSensor0;       /*!< Sinyei PPD42NS sensor read-out of P2 [particle/m^3] */
+#endif
+#ifdef PPD42NS_SENSOR1CONNECTED
+  float ppd42ns1umParticleConcentrationSensor1;        /*!< Sinyei PPD42NS sensor read-out of P1 "around 1 micro meter" [particle/m^3] */
+  float ppd42ns25umParticleConcentrationSensor1;       /*!< Sinyei PPD42NS sensor read-out of P2 [particle/m^3] */
+#endif
 } sensorInformation_t;
 
 /*******************| Global variables |*******************************/

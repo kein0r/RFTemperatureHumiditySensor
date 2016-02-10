@@ -39,9 +39,15 @@
 #define USART_RING_BUFFER_SIZE   32
 
 /**
- * Defined if a second Shinyei PPD42NS sensor is connected 
+ * Defined GP2Y1050 sensor is used
+*/
+#define USE_GP2Y1050SENSOR
+
+/**
+ * Defined Shinyei PPD42NS sensor is used and how many 
  */
-//#define PPD42NS_SENSOR1CONNECTED
+#define PPD42NS_SENSOR0CONNECTED
+#define PPD42NS_SENSOR1CONNECTED
 
 /*******************| Type definitions |*******************************/
 

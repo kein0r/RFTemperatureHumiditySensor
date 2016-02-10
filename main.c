@@ -95,10 +95,16 @@ void main( void )
   
   while(1)
   {
-
+#ifdef PPD42NS_SENSOR0CONNECTED
     /* reset values for PPD42NS because first two messages will be sent without */
-    sensorInformation.ppd42ns1umParticleConcentration = 0.0;
-    sensorInformation.ppd42ns25umParticleConcentration = 0.0;
+    sensorInformation.ppd42ns1umParticleConcentrationSensor0 = 0.0;
+    sensorInformation.ppd42ns25umParticleConcentrationSensor0 = 0.0;
+#endif
+#ifdef PPD42NS_SENSOR1CONNECTED
+    /* reset values for PPD42NS because first two messages will be sent without */
+    sensorInformation.ppd42ns1umParticleConcentrationSensor1 = 0.0;
+    sensorInformation.ppd42ns25umParticleConcentrationSensor1 = 0.0;
+#endif
 
     ledOn();
     measureAllValues();
@@ -114,9 +120,16 @@ void main( void )
     measureAllValues();
    /* Because PPD42NS needs aprox 30s for a complete sensor read-out we wait after we read
     * the other values */
+#ifdef PPD42NS_SENSOR0CONNECTED
     PPD42NS_waitForNextSenorValue();
-    PPD42NS_readSensor0P1Value(&sensorInformation.ppd42ns1umParticleConcentration);
-    PPD42NS_readSensor0P2Value(&sensorInformation.ppd42ns25umParticleConcentration);
+    PPD42NS_readSensor0P1Value(&sensorInformation.ppd42ns1umParticleConcentrationSensor0);
+    PPD42NS_readSensor0P2Value(&sensorInformation.ppd42ns25umParticleConcentrationSensor0);
+#endif
+#ifdef PPD42NS_SENSOR1CONNECTED
+    PPD42NS_waitForNextSenorValue();
+    PPD42NS_readSensor1P1Value(&sensorInformation.ppd42ns1umParticleConcentrationSensor1);
+    PPD42NS_readSensor1P2Value(&sensorInformation.ppd42ns25umParticleConcentrationSensor1);
+#endif
     ledOff();
     IEEE802154_radioSentDataFrame(&IEEE802154_TxDataFrame, sizeof(sensorInformation_t));
     
